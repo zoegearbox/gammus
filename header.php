@@ -54,10 +54,17 @@ $db = $config->getConnection();
 			-->
 			<li><a href="services.php">Services</a></li>
 			<li><a href="send.php">Kirim SMS</a></li>
-			<li><a href="inbox.php"> Data Inbox<div id="success"></div></a> </li>
-			<li><a href="outbox.php"> Data Outbox</a> </li>
-			<li><a href="sentbox.php"> Data Sentbox</a> </li>
-			<li><a href="tahun_akademik.php"> Data Tahun Akademik</a> </li>
+			<li><a href="inbox.php">Inbox<div id="success"></div></a> </li>
+			<li><a href="outbox.php">Outbox</a> </li>
+			<li><a href="sentbox.php">Sentbox</a> </li>
+			 
+			<li><a href="tahun_akademik.php">Tahun Akademik</a> </li>
+			<li><a href="kelas.php">Kelas</a> </li>
+			<li><a href="santri.php">Santri</a> </li>
+			<li><a href="hafalan.php">Hafalan</a> </li>
+			<li><a href="kelas_santri.php">Santri Kelas</a> </li>
+			<li><a href="hafiz.php">Hafiz</a> </li>
+			 
 			<!-- <li><a href="#">Laporan</a></li> -->
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
@@ -66,7 +73,7 @@ $db = $config->getConnection();
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></a>
 			  <ul class="dropdown-menu">
 				<li><a href="profil.php">Profil</a></li>
-				<li><a href="user.php">Manajemen Pengguna</a></li>
+				<li><a href="#user.php">Manajemen Pengguna</a></li>
 				<li role="separator" class="divider"></li>
 				<li><a href="logout.php">Logout</a></li>
 			  </ul>

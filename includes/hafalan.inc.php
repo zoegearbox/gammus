@@ -1,11 +1,12 @@
 <?php
-class Tahun_akademik {
-	
-	private $conn;
-	private $table_name = "t_tahun_akademik";
+class Hafalan{
 
-	public $id;
-	public $ta;
+	private $conn;
+	private $table_name = "t_hafalan";
+
+	public $id; 
+	public $juz;
+	public $sr; 
 
 	public function __construct($db){
 		$this->conn = $db;
@@ -13,9 +14,10 @@ class Tahun_akademik {
 
 	function insert(){
 
-		$query = "insert into ".$this->table_name." (status,tahun_akademik)values('1',?)";
-		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $this->ta); ;
+		$query = "insert into ".$this->table_name." (status,juz,surah)values('1',?,?)";
+		$stmt = $this->conn->prepare($query); 
+		$stmt->bindParam(1, $this->juz); ;
+		$stmt->bindParam(2, $this->sr); ; 
 
 		if($stmt->execute()){
 			return true;
@@ -27,21 +29,14 @@ class Tahun_akademik {
 
 	function readAll(){
 
-		$query = "SELECT * FROM ".$this->table_name." ORDER BY updated_at ASC";
+		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name."  
+		ORDER BY updated_at ASC";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute();
 
 		return $stmt;
-	}
-	//test
-	function readSpe(){
-
-		$query = "SELECT SUM(harga) AS total FROM ".$this->table_name." ";
-		$stmt = $this->conn->prepare( $query );
-		$stmt->execute();
-
-		return $stmt;
-	}
+	} 
+	 
 
 	// used when filling up the update product form
 	function readOne(){
@@ -54,8 +49,9 @@ class Tahun_akademik {
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-		$this->id = $row['id'];
-		$this->ta = $row['tahun_akademik'];
+		$this->id = $row['id']; 
+		$this->juz = $row['juz']; 
+		$this->sr = $row['surah']; 
 	}
 
 	// update the product
@@ -64,14 +60,16 @@ class Tahun_akademik {
 		$query = "UPDATE
 					" . $this->table_name . "
 				SET
-					tahun_akademik = :ta
+					juz = :juz 
+					surah = :sr 
 				WHERE
 					id = :id";
 
 		$stmt = $this->conn->prepare($query);
-
-		$stmt->bindParam(':ta', $this->ta);
-		$stmt->bindParam(':id', $this->id);
+ 
+		$stmt->bindParam(':juz', $this->juz);
+		$stmt->bindParam(':sr', $this->sr);
+		$stmt->bindParam(':id', $this->id); 
 
 		// execute the query
 		if($stmt->execute()){

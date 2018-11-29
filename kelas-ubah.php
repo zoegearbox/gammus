@@ -1,12 +1,10 @@
 <?php
-include_once 'header.php';
-// include_once 'includes/nilai.inc.php';
-// $pgn = new Nilai($db);
+include_once 'header.php'; 
 
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 
-include_once 'includes/komoditas.inc.php';
-$eks = new Komoditas($db);
+include_once 'includes/kelas.inc.php';
+$eks = new Kelas($db);
 
 $eks->id = $id;
 
@@ -15,11 +13,12 @@ $eks->readOne();
 if($_POST){
 
 	$eks->id = $_POST['id'];
-	$eks->ta = $_POST['ta'];
+	$eks->nk = $_POST['nk'];
+	$eks->ket = $_POST['ket'];
+	$eks->id_ta = $_POST['id_ta'];
 
-	if($eks->update()){
-		// echo "<script>location.href='komoditas.php'</script>";
-		echo "<meta http-equiv='refresh' content='2; url=komoditas.php'>";
+	if($eks->update()){ 
+		echo "<meta http-equiv='refresh' content='2; url=kelas.php'>";
 		?>
 		<div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -40,21 +39,29 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Ubah Tahun</h5>
+			  <h5>Ubah Kelas</h5>
 			</div>
 
 			    <form method="post"> 
 							<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $eks->id; ?>">
  
 				  <div class="form-group">
-				    <label for="kt">Tahun Akademik</label>
-				    <input type="text" class="form-control" id="ta" name="ta" value="<?php echo $eks->ta; ?>">
+				    <label for="nk">Nama Kelas</label>
+				    <input type="text" class="form-control" id="nk" name="nk" value="<?php echo $eks->nk; ?>">
+				  </div>
+				  <div class="form-group">
+				    <label for="ket">Keterangan Kellas</label>
+				    <input type="text" class="form-control" id="ket" name="ket" value="<?php echo $eks->ket; ?>">
+				  </div>
+				  <div class="form-group">
+				    <label for="id_ta">Tahun Akademik</label>
+				    <input type="text" class="form-control" id="id_ta" name="id_ta" value="<?php echo $eks->id_ta; ?>">
 				  </div>
 
  
 
 				  <button type="submit" class="btn btn-primary">Ubah</button>
-				  <button type="button" onclick="location.href='komoditas.php'" class="btn btn-success">Kembali</button>
+				  <button type="button" onclick="location.href='kelas.php'" class="btn btn-success">Kembali</button>
 				</form>
 
 		  </div>
