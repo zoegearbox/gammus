@@ -49,8 +49,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 <td><?php echo $row['nama_santri'] ?></td>
                 <td><?php echo $row['tahun'] ?></td>
                 <td><?php echo $row['bulan'] ?></td>
-                <td><?php echo $row['pencapaian_hafalan'] ?></td> 
-                <td><?php echo $row['penambahan_hafalan'] ?></td> 
+                <td><?php echo $row['cap_surah'] ?> (<?php echo $row['cap_juz'] ?>)</td>  
+                <td> <?php echo $row['nam_surah'] ?> (<?php echo $row['nam_juz'] ?>)</td>  
                  
                 <td class="text-center">
 					<a href="hafiz-ubah.php?id=<?php echo $row['id'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>

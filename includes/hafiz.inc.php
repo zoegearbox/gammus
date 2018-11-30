@@ -35,9 +35,11 @@ class Hafiz{
 
 	function readAll(){
 
-		$query = "SELECT ".$this->table_name.".*,nama_santri FROM ".$this->table_name."  
+		$query = "SELECT ".$this->table_name.".id,tahun,bulan,nama_santri,t1.juz AS cap_juz,t1.surah AS cap_surah,t2.juz AS nam_juz,t2.surah AS nam_surah FROM ".$this->table_name."  
 		LEFT JOIN t_santri ON t_santri.id=".$this->table_name.".id_santri 
-		ORDER BY updated_at ASC";
+		LEFT JOIN t_hafalan AS t1 ON t1.id=".$this->table_name.".pencapaian_hafalan
+		LEFT JOIN t_hafalan AS t2 ON t2.id=".$this->table_name.".penambahan_hafalan
+		ORDER BY ".$this->table_name.".updated_at DESC";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute();
 

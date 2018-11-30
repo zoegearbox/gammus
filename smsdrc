@@ -26,4 +26,4 @@ user = root
 # isikan password user untuk akses ke MySQL
 password = 
 # isikan nama database untuk Gammu
-database = nkit_gammu
+database = nkit_sms_santri

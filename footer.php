@@ -1,5 +1,5 @@
 </div>
-<footer class="text-center">Diskan Balangan &copy; 2017</footer>
+<footer class="text-center"><a href="teknobara.co.id" target="_blank"/>Teknobara Corp</a> &copy; 2018</footer>
 	
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

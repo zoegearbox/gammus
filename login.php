@@ -27,12 +27,14 @@ if($_POST){
 		  <div class="col-xs-12 col-sm-12 col-md-8">&nbsp;
 		  <div class="page-header">
 			  
-			  <h5>Info Perizinan dan Layanan pada Dinas Penanaman Modal dan PTSP</h5>
+			  <h5>SMS GATEWAY HAFIZ SANTRI INDONESIA</h5>
 			</div>
 		  <div class="panel panel-default" >
 		  <div class="panel-body">
 		  
-		  	<p> Aplikasi SMS GATEWAY ini adalah bentuk pelayanan terpadu dari Dinas Penanaman Modal dan PTSP Kabupaten Balangan. Untuk mengetahui informasi pengajuan perizinan maupun berbagai informasi kegiatan usaha dan masalah perizinan di daerah Kabupaten Balangan.</p><p>Untuk Mengetahui informasi pengajuan Perizinan yang telah diajukan, dapat menggunakan sintak sms = IZIN&lt;spasi&gt;Nomor Pengajuan. Contoh = IZIN 0913231 kirim ke +62852 5190 6905. Untuk informasi lainnya terkait Dinas Penanaman Modal dan PTSP dapat menggunakan sintak sms = INFO&lt;spasi&gt;Pertanyaan, contoh INFO Ada rumah sarang walet di jl.Keruing, suaranya mengganggu kami. apakah sudah ada izinnya? kirim ke +62852 5190 6905.</p>
+		  	<p> Aplikasi SMS GATEWAY ini adalah bentuk pelayanan terpadu dari Pondok Pesantren juga sebagai bentuk inovasi teknologi yang telah diterapkan di Pondok Pesantren. Untuk mengetahui informasi hafalan yang telah dicapai oleh santri dan juga progress yang sedang dilakukan oleh santri untuk menjadi tahfiz Qur'an.</p>
+			<p>Untuk Mengetahui informasi hafalan santri yang ada pada database, dapat menggunakan sintak sms= HAFALAN&lt;spasi&gt;Nomor Induk Santri. Contoh = HAFALAN 17930001 kirim ke +62877 2070 9099. Untuk informasi lainnya terkait kegiatan Pesantren dapat menggunakan sintak sms = INFO&lt;spasi&gt;Pertanyaan, contoh INFO kapan penerimaan santri baru dimulai?. kirim ke +62877 2070 9099.</p>
+			<p> Aplikasi SMS SANTRI dipersembahkan oleh <a href="teknobara.co.id" target="_blank">CV.TEKNOBARA</a> sebagai bagian dari Tanggung jawab Sosial Perusahaan atau Corporate Social Responsibility (CSR) terhadap pendidikan dan teknologi di masyarakat Indonesia.</p>
 		  
 		  </div>
 		  </div> 
