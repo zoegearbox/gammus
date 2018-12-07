@@ -1,5 +1,9 @@
 <?php
 include_once 'header.php'; 
+include_once 'includes/santri.inc.php';
+$pgn1 = new Santri($db); 
+include_once 'includes/hafalan.inc.php';
+$pgn2 = new Hafalan($db); 
  
 if($_POST){
 	
@@ -44,7 +48,18 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			    <form method="post">
 				  <div class="form-group">
 				    <label for="id_s">Pilih Santri</label>
-				    <input type="text" class="form-control" id="id_S" name="id_s"  maxlength="50" autofocus required/>
+				    <select class="form-control" id="id_s" name="id_s">
+				    	<?php
+						$stmt1 = $pgn1->readAll();
+						while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
+							extract($row1);
+							if ($eks->id_s==$id) {
+											$cek = "selected";
+										} else { $cek=""; }
+							echo "<option value='{$id}' $cek>{$nama_santri} {$nama_kelas}</option>";
+						}
+					    ?>
+				    </select>
 				  </div>
 				  <div class="form-group">
 				    <label for="th">Tahun</label>
@@ -52,15 +67,37 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				  </div>
 				  <div class="form-group">
 				    <label for="bln">Bulan</label>
-				    <input type="text" class="form-control" id="bln" name="bln"  maxlength="50" autofocus required/>
+				    <input type="text" class="form-control" id="bln" name="bln"  maxlength="50" value="<?php echo date('m'); ?>" autofocus required/>
 				  </div>
 				  <div class="form-group">
 				    <label for="cap">Pencapaian hafalan</label>
-				    <input type="text" class="form-control" id="cap" name="cap"  maxlength="50" autofocus required/>
+				     <select class="form-control" id="cap" name="cap">
+				    	<?php
+						$stmt2 = $pgn2->readAll();
+						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+							extract($row2);
+							if ($eks->cap==$id) {
+											$cek = "selected";
+										} else { $cek=""; }
+							echo "<option value='{$id}' $cek>{$surah} {$juz}</option>";
+						}
+					    ?>
+				    </select>
 				  </div>
 				  <div class="form-group">
 				    <label for="nam">Penambahan hafalan</label>
-				    <input type="text" class="form-control" id="nam" name="nam"  maxlength="50" autofocus required/>
+				    <select class="form-control" id="nam" name="nam">
+				    	<?php
+						$stmt2 = $pgn2->readAll();
+						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+							extract($row2);
+							if ($eks->cap==$id) {
+											$cek = "selected";
+										} else { $cek=""; }
+							echo "<option value='{$id}' $cek>{$surah} {$juz}</option>";
+						}
+					    ?>
+				    </select>
 				  </div>
 				  
 				  <button type="submit" class="btn btn-primary">Simpan</button>

@@ -47,7 +47,7 @@ if($_POST){
 		  		<form method="post">
 				  <div class="form-group">
 				    <label for="InputUsername1">Username</label>
-				    <input type="text" class="form-control" name="username"  id="InputUsername1" placeholder="Username">
+				    <input type="text" class="form-control" name="username"  id="InputUsername1" placeholder="Username" autofocus/>
 				  </div>
 				  <div class="form-group">
 				    <label for="InputPassword1">Password</label>

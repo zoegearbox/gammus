@@ -70,7 +70,7 @@ class Inbox{
 	// used when filling up the update product form
 	function readOne(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_alternatif=? LIMIT 0,1";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE ID=? LIMIT 0,1";
 
 		$stmt = $this->conn->prepare( $query );
 		$stmt->bindParam(1, $this->id);
@@ -78,59 +78,13 @@ class Inbox{
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		
-		$this->id = $row['id_alternatif'];
-		$this->ni = $row['nip'];
-		$this->kt = $row['nama_alternatif'];
-		$this->gol = $row['golongan'];
-		$this->jbt = $row['jabatan'];
+		$this->id = $row['ID'];
+		$this->sms = $row['TextDecoded'];
+		$this->by = $row['SenderNumber'];
+		$this->recieve = $row['ReceivingDateTime'];
+		// $this->update = $row['UpdateInDB'];
 	}
-	// used when filling up the update product form
-	function readOnen(){
 		
-		$query = "SELECT * FROM " . $this->table_name . " WHERE id_alternatif=? LIMIT 0,1";
-
-		$stmt = $this->conn->prepare( $query );
-		$stmt->bindParam(1, $this->ia);
-		$stmt->execute();
-
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-		
-		$this->ia = $row['id_alternatif'];
-		$this->ni = $row['nip'];
-		$this->kt = $row['nama_alternatif'];
-		$this->gol = $row['golongan'];
-		$this->jbt = $row['jabatan'];
-	}
-	
-	// update the product
-	function update(){
-
-		$query = "UPDATE 
-					" . $this->table_name . " 
-				SET 
-					nip = :ni,
-					nama_alternatif = :kt,
-					golongan = :gol,
-					jabatan = :jbt
-				WHERE
-					id_alternatif = :id";
-
-		$stmt = $this->conn->prepare($query);
-
-		$stmt->bindParam(':id', $this->id);
-		$stmt->bindParam(':ni', $this->ni);
-		$stmt->bindParam(':kt', $this->kt);
-		$stmt->bindParam(':gol', $this->gol);
-		$stmt->bindParam(':jbt', $this->gol);
-		
-		// execute the query
-		if($stmt->execute()){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
 	// delete the product
 	function delete(){
 	

@@ -49,12 +49,15 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				    <input type="text" class="form-control" id="nm" name="nm"  maxlength="50" autofocus required/>
 				  </div> 
 				  <div class="form-group">
-				    <label for="ta">Tahun Akademik</label>
-				    <input type="text" class="form-control" id="ta" name="ta"  maxlength="50" autofocus required/>
+				    <label for="ta">Tahun Masuk</label>
+				    <input type="text" class="form-control" id="ta" name="ta"  maxlength="50" value="<?php echo date('Y'); ?>" autofocus required/>
 				  </div> 
 				  <div class="form-group">
 				    <label for="sta">Status Santri</label>
-				    <input type="text" class="form-control" id="sta" name="sta"  maxlength="50" autofocus required/>
+				    <select class="form-control" id="sta" name="sta">
+				    	 <option value='Aktif' >Aktif</option>  
+				    	 <option value='Tidak Aktif' >Tidak Aktif</option>  
+				    </select>
 				  </div> 
 				  
 				  <button type="submit" class="btn btn-primary">Simpan</button>

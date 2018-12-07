@@ -34,10 +34,33 @@ class Santri{
 	function readAll(){
 
 		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name."  
-		ORDER BY updated_at ASC";
+		ORDER BY updated_at DESC";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute();
 
+		return $stmt;
+	} 
+	 
+
+	function readWali(){
+
+		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name." WHERE ".$this->table_name.".id NOT IN (SELECT t_wali.id_santri from t_wali LEFT JOIN ".$this->table_name." ON ".$this->table_name.".id=t_wali.id_santri WHERE t_wali.id_santri=".$this->table_name.".id) GROUP BY ".$this->table_name.".id
+		ORDER BY ".$this->table_name.".updated_at ASC";
+		$stmt = $this->conn->prepare( $query );
+		$stmt->execute();
+
+		return $stmt;
+	} 
+
+	function readKelas(){
+
+		$query = "SELECT ".$this->table_name.".*,t_kelas.nama_kelas FROM ".$this->table_name."
+		LEFT JOIN t_kelas_santri ON t_kelas_santri.id_santri=".$this->table_name.".id
+		LEFT JOIN t_kelas ON t_kelas.id=t_kelas_santri.id_kelas
+		ORDER BY ".$this->table_name.".updated_at ASC";
+		$stmt = $this->conn->prepare( $query );
+		$stmt->execute(); 
+		
 		return $stmt;
 	} 
 	 
@@ -66,9 +89,9 @@ class Santri{
 		$query = "UPDATE
 					" . $this->table_name . "
 				SET
-					nis = :nis 
-					nama_santri = :nm
-					tahun_akademik = :ta
+					nis = :nis, 
+					nama_santri = :nm,
+					tahun_akademik = :ta,
 					status_santri = :sta
 				WHERE
 					id = :id";
@@ -79,6 +102,7 @@ class Santri{
 		$stmt->bindParam(':nm', $this->nm);
 		$stmt->bindParam(':ta', $this->ta);
 		$stmt->bindParam(':sta', $this->sta);
+		$stmt->bindParam(':id', $this->id);
 
 		// execute the query
 		if($stmt->execute()){

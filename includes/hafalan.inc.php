@@ -30,7 +30,17 @@ class Hafalan{
 	function readAll(){
 
 		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name."  
-		ORDER BY updated_at ASC";
+		ORDER BY updated_at DESC";
+		$stmt = $this->conn->prepare( $query );
+		$stmt->execute();
+
+		return $stmt;
+	} 
+	
+	function readBroadcast(){
+
+		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name."  
+		ORDER BY updated_at DESC";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute();
 
@@ -60,7 +70,7 @@ class Hafalan{
 		$query = "UPDATE
 					" . $this->table_name . "
 				SET
-					juz = :juz 
+					juz = :juz, 
 					surah = :sr 
 				WHERE
 					id = :id";

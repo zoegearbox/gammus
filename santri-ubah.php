@@ -16,7 +16,7 @@ if($_POST){
 	$eks->nis = $_POST['nis'];
 	$eks->nm = $_POST['nm'];
 	$eks->ta = $_POST['ta'];
-	$eks->sta = $_POST['sta'];
+	$eks->sta = $_POST['sta']; 
 
 	if($eks->update()){ 
 		echo "<meta http-equiv='refresh' content='2; url=santri.php'>";
@@ -32,6 +32,7 @@ if($_POST){
 <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Gagal Ubah Data!</strong> Terjadi kesalahan, coba sekali lagi.
+  
 </div>
 <?php
 	}
@@ -40,7 +41,7 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Ubah Santri di Kelas</h5>
+			  <h5>Ubah Data Santri</h5>
 			</div>
 
 			    <form method="post"> 
@@ -61,7 +62,11 @@ if($_POST){
 				  </div> 
 				  <div class="form-group">
 				    <label for="sta">Status Santri</label>
-				    <input type="text" class="form-control" id="sta" name="sta" value="<?php echo $eks->sta; ?>">
+				     
+					<select class="form-control" id="sta" name="sta">
+				    	 <option value='Aktif' <?php if ($eks->sta=='Aktif') { echo "Selected"; } ?>>Aktif</option>  
+				    	 <option value='Tidak Aktif' <?php if ($eks->sta=='Tidak Aktif') { echo "Selected"; }  ?>>Tidak Aktif</option>  
+				    </select>
 				  </div> 
 
  

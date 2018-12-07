@@ -65,9 +65,9 @@ class Wali{
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		$this->id = $row['id']; 
-		$this->juz = $row['id_santri']; 
-		$this->sr = $row['nama_wali']; 
-		$this->sr = $row['no_hp']; 
+		$this->id_s = $row['id_santri']; 
+		$this->namaw = $row['nama_wali']; 
+		$this->nohp = $row['no_hp']; 
 	}
 
 	// update the product

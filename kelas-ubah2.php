@@ -1,19 +1,15 @@
 <?php
 include_once 'header.php'; 
-include_once 'includes/tahun_akademik.inc.php';
-$pgn2 = new Tahun_akademik($db);
 
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 
 include_once 'includes/kelas.inc.php';
 $eks = new Kelas($db);
 
-$eks->id = $id; 
-
-
+$eks->id = $id;
 
 $eks->readOne();
- $id_ta	= isset($_POST['id_ta']) ?  $_POST['id_ta'] : $eks->id_ta;
+
 if($_POST){
 
 	$eks->id = $_POST['id'];
@@ -59,18 +55,7 @@ if($_POST){
 				  </div>
 				  <div class="form-group">
 				    <label for="id_ta">Tahun Akademik</label>
-				   <select class="form-control" id="id_ta" name="id_ta">
-				    	<?php
-						$stmt2 = $pgn2->readAll();
-						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
-							extract($row2);
-							if ($id_ta ==$id) {
-											$cek = "selected";
-										} else { $cek=""; }
-							echo "<option value='{$id}' $cek>{$tahun_akademik}</option>";
-						}
-					    ?>
-				    </select>
+				    <input type="text" class="form-control" id="id_ta" name="id_ta" value="<?php echo $eks->id_ta; ?>">
 				  </div>
 
  

@@ -52,18 +52,28 @@ $db = $config->getConnection();
 			<!-- <li><a href="nilai.php">Nilai</a></li> 
 			<li><a class="dropdown-toggle" data-toggle="dropdown" href="inbox.php"> Data Inbox</a>
 			-->
+			
+			<li><a href="hafiz.php">Hafiz</a> </li>
+			<li><a href="broadcast.php">Broadcast SMS</a> </li>
+			<li><a class="dropdown-toggle" data-toggle="dropdown" href="#">SMS Data</a>
+			<ul class="dropdown-menu">
 			<li><a href="services.php">Services</a></li>
 			<li><a href="send.php">Kirim SMS</a></li>
 			<li><a href="inbox.php">Inbox<div id="success"></div></a> </li>
 			<li><a href="outbox.php">Outbox</a> </li>
 			<li><a href="sentbox.php">Sentbox</a> </li>
-			 
+			</ul>
+			</li>
+			<li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Master Data</a>
+			<ul class="dropdown-menu">
 			<li><a href="tahun_akademik.php">Tahun Akademik</a> </li>
 			<li><a href="kelas.php">Kelas</a> </li>
 			<li><a href="santri.php">Santri</a> </li>
 			<li><a href="hafalan.php">Hafalan</a> </li>
 			<li><a href="kelas_santri.php">Santri Kelas</a> </li>
-			<li><a href="hafiz.php">Hafiz</a> </li>
+			<li><a href="wali.php">Wali Santri</a> </li>
+			</ul>
+			</li>  
 			 
 			<!-- <li><a href="#">Laporan</a></li> -->
 		  </ul>

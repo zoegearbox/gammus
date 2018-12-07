@@ -46,7 +46,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 <td><?php echo $row['SenderNumber'] ?></td>
                 <td><?php echo $row['TextDecoded'] ?></td>
                 <td class="text-center">
-					<a href="inbox-balas.php?id=<?php echo $row['SenderNumber'] ?>" class="btn btn-info"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
+					<a href="inbox-balas.php?id=<?php echo $row['ID'] ?>" class="btn btn-info"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
 					<!-- <a href="alternatif-hapus.php?id=<?php echo $row['id_alternatif'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> -->
 			    </td>  
             </tr>

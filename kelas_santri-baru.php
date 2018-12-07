@@ -1,5 +1,9 @@
 <?php
 include_once 'header.php'; 
+include_once 'includes/santri.inc.php';
+$pgn1 = new Santri($db); 
+include_once 'includes/kelas.inc.php';
+$pgn2 = new Kelas($db);
  
 if($_POST){
 	
@@ -9,8 +13,10 @@ $stmt = $eks->readAll();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
 	$eks->id_s = $_POST['id_s']; 
-	$eks->id_k = $_POST['id_k']; 
+	$eks->id_k = $_POST['id_k'];
 	
+	// var_dump($eks->id_s);
+	// var_dump($eks->id_k); 
 	if($eks->insert()){
 ?>
 <div class="alert alert-success alert-dismissible" role="alert">
@@ -34,17 +40,39 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Tambah Samtri ke Kelas</h5>  
+			  <h5>Tambah Santri ke Kelas</h5>  
 			</div>
 			
 			    <form method="post">
 				  <div class="form-group">
 				    <label for="id_s">Pilih Santri</label>
-				    <input type="text" class="form-control" id="id_s" name="id_s"  maxlength="50" autofocus required/>
+				    <select class="form-control" id="id_s" name="id_s">
+				    	<?php
+						$stmt1 = $pgn1->readAll();
+						while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
+							extract($row1);
+							// if ($id_s ==$id) {
+											// $cek = "selected";
+										// } else { $cek=""; }
+							echo "<option value='{$id}' >{$nama_santri} {$nama_kelas}</option>";
+						}
+					    ?>
+				    </select>
 				  </div>
 				  <div class="form-group">
 				    <label for="id_k">Pilih Kelas</label>
-				    <input type="text" class="form-control" id="id_k" name="id_k"  maxlength="50" autofocus required/>
+				    <select class="form-control" id="id_k" name="id_k">
+				    	<?php
+						$stmt2 = $pgn2->readAll();
+						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+							extract($row2);
+							// if ($id_k ==$id) {
+											// $cek = "selected";
+										// } else { $cek=""; }
+							echo "<option value='{$id}' >{$nama_kelas}</option>";
+						}
+					    ?>
+				    </select>
 				  </div> 
 				  
 				  <button type="submit" class="btn btn-primary">Simpan</button>

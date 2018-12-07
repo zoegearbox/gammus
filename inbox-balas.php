@@ -1,6 +1,16 @@
 <?php
-include_once 'header.php';
-$nomor = $_GET['id'];
+include_once 'header.php'; 
+$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
+
+
+include_once 'includes/inbox.inc.php';
+$eks = new Inbox($db);
+
+$eks->id = $id;
+
+$eks->readOne();
+
+
 ?>
 <div class="container">
 		<div class="row">
@@ -13,11 +23,12 @@ $nomor = $_GET['id'];
 		
  <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>">
 				  <div class="form-group">
-				    <label for="hp">No HP</label>
-				    <input type="text" class="form-control" id="hp" name="nohp" value="<?php echo $nomor; ?>" required>
-				  </div>
+				    <label for="pesan"><?php echo $eks->by; ?></label>
+				    <input type="text" class="form-control" id="pesan" name="pesan" value="<?php echo $eks->sms; ?>" readonly/>
+				  </div> 
+				    <input type="hidden" class="form-control" id="hp" name="nohp" value="<?php echo $eks->by; ?>" required readonly/> 
 				  <div class="form-group">
-				    <label for="ms">Pesan</label>
+				    <label for="ms">Balas Pesan</label>
 				    <input type="text" class="form-control" id="ms" name="pesan" required>
 				  </div>
 				  <button type="submit" name="button" class="btn btn-primary">Kirim</button>
@@ -68,13 +79,13 @@ $stmt->bindParam(':isi_sms', $obj_sms->isi_sms);
 
 $stmt->execute();
 
-echo "<script>alert('sukses kirim sms')</script>";
+echo "<script>alert('sukses kirim sms, lihat sentbox untuk memastikan terkirim')</script>";
 
 $conn = null;
 }
 catch(PDOException $e)
 {
-echo "Ada Kesalahan"; 
+echo "Gagal Kirim, ada Kesalahan, hubungi Administrator"; 
 die();
 }
 }
