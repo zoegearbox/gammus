@@ -48,9 +48,10 @@ class Hafiz{
 
 	function readBroadcast(){
 
-		$query = "SELECT tutama.id,tutama.tahun,tutama.bulan,t_santri.nis,t_santri.nama_santri,t1.juz AS cap_juz,t1.surah AS cap_surah,t2.juz AS nam_juz,t2.surah AS nam_surah 
-		FROM (SELECT MAX(updated_at) AS maxi, t_hafiz.* FROM `t_hafiz` GROUP BY `t_hafiz`.`id_santri` DESC ) AS tutama   
+		$query = "SELECT tutama.id,tutama.tahun,tutama.bulan,t_santri.nis,t_santri.nama_santri,t_wali.nama_wali,t_wali.no_hp,t1.juz AS cap_juz,t1.surah AS cap_surah,t2.juz AS nam_juz,t2.surah AS nam_surah 
+		FROM (SELECT MAX(id) AS maxi, t_hafiz.* FROM `t_hafiz` GROUP BY `t_hafiz`.`id_santri` DESC ) AS tutama   
 		LEFT JOIN t_santri ON t_santri.id=tutama.id_santri 
+		LEFT JOIN t_wali ON t_wali.id_santri=tutama.id_santri 
 		LEFT JOIN t_hafalan AS t1 ON t1.id=tutama.pencapaian_hafalan
 		LEFT JOIN t_hafalan AS t2 ON t2.id=tutama.penambahan_hafalan 
 		ORDER BY t_santri.nis ASC";

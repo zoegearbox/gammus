@@ -54,7 +54,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             <tr>
                 <th width="30px">No</th>
                 <th>NIS </th> 
-                <th>Santri </th> 
+                <th>Santri </th>  
+                <th>Wali </th> 
+                <th>No HP </th>
                 <th>Tahun </th> 
                 <th>Bulan </th> 
                 <th>Pencapaian </th> 
@@ -67,6 +69,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 <th>No</th>
                 <th>NIS </th> 
                 <th>Santri </th> 
+                <th>Wali </th> 
+                <th>No HP </th> 
                 <th>Tahun </th> 
                 <th>Bulan </th> 
                 <th>Pencapaian </th> 
@@ -83,6 +87,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 <td><?php echo $no++ ?></td>
                 <td><?php echo $row['nis'] ?></td>
                 <td><?php echo $row['nama_santri'] ?></td>
+                <td><?php echo $row['nama_wali'] ?></td>
+                <td><?php echo $row['no_hp'] ?></td>
                 <td><?php echo $row['tahun'] ?></td>
                 <td><?php echo $row['bulan'] ?></td>
                 <td><?php echo $row['cap_surah'] ?> (<?php echo $row['cap_juz'] ?>)</td>  
