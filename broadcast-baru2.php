@@ -7,54 +7,13 @@ $stmt = $pro->readBroadcast();
 $test = $pro->jmlBroadcast(); 
 if($_POST){
 	
-	//kirim sms
-	require_once 'includes/koneksis.php';
-	require_once 'includes/class_sms.php'; 
-
-	$obj_db  = new db;
-	$obj_sms = new sms;
-
-	
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-		
-	$obj_sms->no_hp  = $row['no_hp'];
-	$obj_sms->isi_sms = $row['nis']." ".$row['nama_santri']." pencapaian hafalan bulan ini ".$row['cap_surah']."(".$row['cap_juz']." dan sedang menghafal ".$row['nam_surah']."(".$row['nam_juz'];
-
-	try {
-
-	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	$obj_db->table_name = "outbox";
-	$obj_db->fields     = array("DestinationNumber","TextDecoded");
-	$obj_db->values     = array(":no_hp",":isi_sms");
-	$doQuery            = $obj_db->QueryInsert($obj_db->table_name, $obj_db->fields, $obj_db->values);
-
-	$stmt2 = $conn->prepare($doQuery);
-
-	$stmt2->bindParam(':no_hp', $obj_sms->no_hp);
-	$stmt2->bindParam(':isi_sms', $obj_sms->isi_sms);
-
-	$stmt2->execute();
-	
-	
-	// echo "<script>alert('sukses kirim sms, lihat sentbox untuk memastikan terkirim')</script>";
-
-	// $conn = null;
-	}
-	catch(PDOException $e)
-	{
-	echo "Gagal Kirim, ada Kesalahan, hubungi Administrator"; 
-	die();
-	}
-	} 
-	//simpan broadcast
 	include_once 'includes/broadcast.inc.php';
 	$eks = new Broadcast($db); 
-	// $stmt = $eks->readAll();
-	$row = $stmt->fetch(PDO::FETCH_ASSOC); 
+$stmt = $eks->readAll();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+ 
 	$eks->th = $_POST['th'];   
 	$eks->bl = $_POST['bl'];  
-	$eks->jml = 4;  
 	
 	if($eks->insert()){
 ?>
@@ -151,6 +110,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 		  	<?php include_once 'sidebar.php'; ?>
 		  </div>
 		</div>
-		<?php  
-		include_once 'footer.php';
-		?>
+		<?php
+include_once 'footer.php';
+?>

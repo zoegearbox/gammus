@@ -17,9 +17,9 @@ class Broadcast{
 
 		$query = "insert into ".$this->table_name." (status,tahun,bulan,jumlah_kirim)values('1',?,?,?)";
 		$stmt = $this->conn->prepare($query); 
-		$stmt->bindParam(1, $this->th); ;
-		$stmt->bindParam(2, $this->bl); ; 
-		$stmt->bindParam(3, $this->jml); ; 
+		$stmt->bindParam(1, $this->th); 
+		$stmt->bindParam(2, $this->bl);
+		$stmt->bindParam(3, $this->jml); 
 
 		if($stmt->execute()){
 			return true;
