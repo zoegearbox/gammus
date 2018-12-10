@@ -14,12 +14,13 @@ if($_POST){
 	$obj_db  = new db;
 	$obj_sms = new sms;
 
-	
+	$jml=0;
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 		
 	$obj_sms->no_hp  = $row['no_hp'];
 	$obj_sms->isi_sms = $row['nis']." ".$row['nama_santri']." pencapaian hafalan bulan ini ".$row['cap_surah']."(".$row['cap_juz']." dan sedang menghafal ".$row['nam_surah']."(".$row['nam_juz'];
 
+	$jml++;
 	try {
 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -54,7 +55,7 @@ if($_POST){
 	$row = $stmt->fetch(PDO::FETCH_ASSOC); 
 	$eks->th = $_POST['th'];   
 	$eks->bl = $_POST['bl'];  
-	$eks->jml = 4;  
+	$eks->jml = $jml;  
 	
 	if($eks->insert()){
 ?>
@@ -137,12 +138,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             </tr>
 <?php
 }
+
 ?>
         </tbody>
 
     </table>	   
 				  
-				  <button type="submit" class="btn btn-primary">KIRIM</button>
+				  <button type="submit" class="btn btn-primary">KIRIM </button>
 				  <button type="button" onclick="location.href='broadcast.php'" class="btn btn-success">Kembali</button>
 				</form>
 			  

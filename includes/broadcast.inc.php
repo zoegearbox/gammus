@@ -12,13 +12,13 @@ class Broadcast{
 	public function __construct($db){
 		$this->conn = $db;
 	}
-
+ 
 	function insert(){
 
-		$query = "insert into ".$this->table_name." (status,tahun,bulan,jumlah_kirim)values('1',?,?,?)";
+		$query = "insert into ".$this->table_name." (status,tahun,bulan,jumlah_kirim) values('1',?,?,?)";
 		$stmt = $this->conn->prepare($query); 
 		$stmt->bindParam(1, $this->th); 
-		$stmt->bindParam(2, $this->bl);
+		$stmt->bindParam(2, $this->bl); 
 		$stmt->bindParam(3, $this->jml); 
 
 		if($stmt->execute()){
@@ -28,7 +28,8 @@ class Broadcast{
 		}
 
 	}
-
+	
+	
 	function readAll(){
 
 		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name." 
