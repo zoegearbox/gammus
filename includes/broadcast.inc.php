@@ -15,7 +15,7 @@ class Broadcast{
  
 	function insert(){
 
-		$query = "insert into ".$this->table_name." (status,tahun,bulan,jumlah_kirim) values('1',?,?,?)";
+		$query = "insert into t_broadcast (status,tahun,bulan,jumlah_kirim) values('1','2018,'11',2)";
 		$stmt = $this->conn->prepare($query); 
 		$stmt->bindParam(1, $this->th); 
 		$stmt->bindParam(2, $this->bl); 
@@ -34,7 +34,7 @@ class Broadcast{
 
 		$query = "SELECT ".$this->table_name.".* FROM ".$this->table_name." 
 		ORDER BY ".$this->table_name.".updated_at DESC";
-		$stmt = $this->conn->prepare( $query );
+		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
 
 		return $stmt;

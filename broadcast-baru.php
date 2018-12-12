@@ -2,9 +2,9 @@
 include_once 'header.php'; 
 include_once 'includes/hafiz.inc.php';
 $pro = new Hafiz($db);
-$stmt = $pro->readBroadcast();
+$stmt2 = $pro->readBroadcast();
 // $stmt2 = $pro->readAll();
-$test = $pro->jmlBroadcast(); 
+// $test = $pro->jmlBroadcast(); 
 if($_POST){
 	
 	//kirim sms
@@ -15,7 +15,7 @@ if($_POST){
 	$obj_sms = new sms;
 
 	$jml=0;
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
 		
 	$obj_sms->no_hp  = $row['no_hp'];
 	$obj_sms->isi_sms = $row['nis']." ".$row['nama_santri']." pencapaian hafalan bulan ini ".$row['cap_surah']."(".$row['cap_juz']." dan sedang menghafal ".$row['nam_surah']."(".$row['nam_juz'];
@@ -30,12 +30,12 @@ if($_POST){
 	$obj_db->values     = array(":no_hp",":isi_sms");
 	$doQuery            = $obj_db->QueryInsert($obj_db->table_name, $obj_db->fields, $obj_db->values);
 
-	$stmt2 = $conn->prepare($doQuery);
+	$stmt3 = $conn->prepare($doQuery);
 
-	$stmt2->bindParam(':no_hp', $obj_sms->no_hp);
-	$stmt2->bindParam(':isi_sms', $obj_sms->isi_sms);
+	$stmt3->bindParam(':no_hp', $obj_sms->no_hp);
+	$stmt3->bindParam(':isi_sms', $obj_sms->isi_sms);
 
-	$stmt2->execute();
+	$stmt3->execute();
 	
 	
 	// echo "<script>alert('sukses kirim sms, lihat sentbox untuk memastikan terkirim')</script>";
@@ -51,7 +51,8 @@ if($_POST){
 	//simpan broadcast
 	include_once 'includes/broadcast.inc.php';
 	$eks = new Broadcast($db); 
-	// $stmt = $eks->readAll();
+	$stmt = $eks->readAll();
+	
 	$row = $stmt->fetch(PDO::FETCH_ASSOC); 
 	$eks->th = $_POST['th'];   
 	$eks->bl = $_POST['bl'];  
@@ -79,7 +80,7 @@ if($_POST){
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 		  	<div class="page-header">
-			  <h5>Buat broadcast</h5>  <?php echo $test;?>
+			  <h5>Buat broadcast</h5>   
 			</div>
 			
 			    <form method="post">
@@ -123,7 +124,7 @@ if($_POST){
         <tbody>
 <?php
 $no=1;
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
 ?>
             <tr>
                 <td><?php echo $no++ ?></td>
