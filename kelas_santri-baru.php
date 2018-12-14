@@ -48,7 +48,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				    <label for="id_s">Pilih Santri</label>
 				    <select class="form-control" id="id_s" name="id_s">
 				    	<?php
-						$stmt1 = $pgn1->readAll();
+						$stmt1 = $pgn1->readKelas();
 						while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
 							extract($row1);
 							// if ($id_s ==$id) {

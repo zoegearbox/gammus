@@ -18,8 +18,13 @@ $db = $config->getConnection();
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet"><!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,13 +70,13 @@ $db = $config->getConnection();
 			</ul>
 			</li>
 			<li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Master Data</a>
-			<ul class="dropdown-menu">
-			<li><a href="tahun_akademik.php">Tahun Akademik</a> </li>
-			<li><a href="kelas.php">Kelas</a> </li>
-			<li><a href="santri.php">Santri</a> </li>
-			<li><a href="hafalan.php">Hafalan</a> </li>
+			<ul class="dropdown-menu"> 
+			<li><a href="wali.php">Wali Santri</a> </li> 
 			<li><a href="kelas_santri.php">Santri Kelas</a> </li>
-			<li><a href="wali.php">Wali Santri</a> </li>
+			<li><a href="santri.php">Santri</a> </li>
+			<li><a href="kelas.php">Kelas</a> </li>
+			<li><a href="tahun_akademik.php">Tahun Akademik</a> 
+			<li><a href="hafalan.php">Hafalan</a> </li></li>
 			</ul>
 			</li>  
 			 

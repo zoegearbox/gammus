@@ -71,7 +71,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				  </div>
 				  <div class="form-group">
 				    <label for="cap">Pencapaian hafalan</label>
-				     <select class="form-control" id="cap" name="cap">
+				     <select class="form-control" id="cap" name="cap" data-show-subtext="true" data-live-search="true">
 				    	<?php
 						$stmt2 = $pgn2->readAll();
 						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){

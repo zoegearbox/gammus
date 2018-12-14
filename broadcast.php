@@ -45,10 +45,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 <td><?php echo $row['tahun'] ?></td> 
                 <td><?php echo $row['bulan'] ?></td> 
                 <td><?php echo $row['jumlah_kirim'] ?></td>   
-                <td class="text-center">
-					<a href="broadcast-ubah.php?id=<?php echo $row['id'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+              <td class="text-center">
+				  <!-- 	<a href="broadcast-ubah.php?id=<?php echo $row['id'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> -->
 					<a href="broadcast-hapus.php?id=<?php echo $row['id'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 			    </td>
+				
+				
             </tr>
 <?php
 }

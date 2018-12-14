@@ -21,6 +21,7 @@ $stmt = $pro->readAll();
                 <th width="120">Tanggal Kirim</th>
                 <th width="120">No Tujuan</th>
                 <th width="480">Pesan</th>
+                <th width="100">Status</th>
                <!--  <th width="100px">Aksi</th> -->
             </tr>
         </thead>
@@ -31,6 +32,7 @@ $stmt = $pro->readAll();
                 <th>Tanggal Kirim</th>
                 <th>No Tujuan</th>
                 <th>Pesan</th>
+                <th>Status</th>
                 <!-- <th>Aksi</th> -->
             </tr>
         </tfoot>
@@ -39,12 +41,16 @@ $stmt = $pro->readAll();
 <?php
 $no=1;
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	if($row['Status']=="SendingOKNoReport") {
+		$row['Status'] = "Send";
+	} else { $row['Status'] = "Error!"; }
 ?>
             <tr>
                 <td><?php echo $no++ ?></td>
                 <td><?php echo $row['SendingDateTime'] ?></td>
                 <td><?php echo $row['DestinationNumber'] ?></td>
                 <td><?php echo $row['TextDecoded'] ?></td>
+                <td><?php echo $row['Status'] ?></td>
                 <!-- <td class="text-center">
 					<a href="alternatif-ubah.php?id=<?php echo $row['id_alternatif'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 					<a href="alternatif-hapus.php?id=<?php echo $row['id_alternatif'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>

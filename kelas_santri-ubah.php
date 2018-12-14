@@ -1,5 +1,9 @@
 <?php
 include_once 'header.php'; 
+include_once 'includes/santri.inc.php';
+$pgn1 = new Santri($db); 
+include_once 'includes/kelas.inc.php';
+$pgn2 = new Kelas($db);
 
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 
@@ -8,8 +12,9 @@ $eks = new KelasSantri($db);
 
 $eks->id = $id;
 
-$eks->readOne();
-
+$eks->readOne(); 
+$id_s = isset($_POST['id_s']) ? $_POST['id_s'] : $eks->id_s;
+$id_k = isset($_POST['id_k']) ? $_POST['id_k'] : $eks->id_k;
 if($_POST){
 
 	$eks->id = $_POST['id']; 
@@ -46,11 +51,33 @@ if($_POST){
  
 				  <div class="form-group">
 				    <label for="id_s">Nama Santri</label>
-				    <input type="text" class="form-control" id="id_s" name="id_s" value="<?php echo $eks->id_s; ?>">
+				   <select class="form-control" id="id_s" name="id_s">
+				    	<?php
+						$stmt1 = $pgn1->readAll();
+						while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)){
+							extract($row1);
+							if ($eks->id_s==$id) {
+											$cek = "selected";
+										} else { $cek=""; }
+							echo "<option value='{$id}' $cek>{$nama_santri} {$nama_kelas}</option>";
+						}
+					    ?>
+				    </select>
 				  </div>
 				  <div class="form-group">
-				    <label for="id_k">Nama Kellas</label>
-				    <input type="text" class="form-control" id="id_k" name="id_k" value="<?php echo $eks->id_k; ?>">
+				    <label for="id_k">Pilih Kelas </label>
+				    <select class="form-control" id="id_k" name="id_k">
+				    	<?php
+						$stmt2 = $pgn2->readAll();
+						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+							extract($row2);
+							if ($eks->id_k ==$id) {
+											$cek = "selected";
+										} else { $cek=""; }
+							echo "<option value='{$id}' $cek>{$nama_kelas}</option>";
+						}
+					    ?>
+				    </select>
 				  </div> 
 
  

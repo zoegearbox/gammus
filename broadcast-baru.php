@@ -16,9 +16,11 @@ if($_POST){
 
 	$jml=0;
 	while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
+	$nama = explode(" ",$row['nama_santri']);
+	$namabaru = $nama[0]." ".$nama[1];
 
 		$obj_sms->no_hp  = $row['no_hp'];
-		$obj_sms->isi_sms = $row['nis']." ".$row['nama_santri']." pencapaian hafalan bulan ini ".$row['cap_surah']."(".$row['cap_juz']." dan sedang menghafal ".$row['nam_surah']."(".$row['nam_juz'];
+		$obj_sms->isi_sms = $row['nis']." ".$namabaru." pencapaian hafalan bulan ini ".$row['cap_surah']."(".$row['cap_juz'].") dan sedang menghafal ".$row['nam_surah']."(".$row['nam_juz'].")";
 
 		$jml++;
 		try {

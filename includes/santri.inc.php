@@ -57,7 +57,7 @@ class Santri{
 		$query = "SELECT ".$this->table_name.".*,t_kelas.nama_kelas FROM ".$this->table_name."
 		LEFT JOIN t_kelas_santri ON t_kelas_santri.id_santri=".$this->table_name.".id
 		LEFT JOIN t_kelas ON t_kelas.id=t_kelas_santri.id_kelas
-		ORDER BY ".$this->table_name.".updated_at ASC";
+		ORDER BY ".$this->table_name.".updated_at DESC";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute(); 
 		
