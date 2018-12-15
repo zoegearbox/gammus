@@ -77,6 +77,7 @@ $db = $config->getConnection();
 			<li><a href="kelas.php">Kelas</a> </li>
 			<li><a href="tahun_akademik.php">Tahun Akademik</a> 
 			<li><a href="hafalan.php">Hafalan</a> </li></li>
+			<li><a href="pesantren.php">Pondok</a> </li></li>
 			</ul>
 			</li>  
 			 

@@ -4,6 +4,10 @@ include_once 'includes/config.php';
 $config = new Config();
 $db = $config->getConnection();
 	
+include_once 'includes/pesantren.inc.php';
+$eks = new Pesantren($db);  
+$eks->readReal();
+
 if($_POST){
 	
 	include_once 'includes/login.inc.php';
@@ -32,8 +36,9 @@ if($_POST){
 		  <div class="panel panel-default" >
 		  <div class="panel-body">
 		  
-		  	<p> Aplikasi SMS GATEWAY ini adalah bentuk pelayanan terpadu dari Pondok Pesantren juga sebagai bentuk inovasi teknologi yang telah diterapkan di Pondok Pesantren. Untuk mengetahui informasi hafalan yang telah dicapai oleh santri dan juga progress yang sedang dilakukan oleh santri untuk menjadi tahfiz Qur'an.</p>
-			<p>Untuk Mengetahui informasi hafalan santri yang ada pada database, dapat menggunakan sintak sms= HAFALAN&lt;spasi&gt;Nomor Induk Santri. Contoh = HAFALAN 17930001 kirim ke +62877 2070 9099. Untuk informasi lainnya terkait kegiatan Pesantren dapat menggunakan sintak sms = INFO&lt;spasi&gt;Pertanyaan, contoh INFO kapan penerimaan santri baru dimulai?. kirim ke +62877 2070 9099.</p>
+		  	<p> Aplikasi SMS GATEWAY ini adalah bentuk pelayanan terpadu dari dan juga sebagai bentuk inovasi teknologi yang telah diterapkan di <b><?php echo $eks->nmp;?></b>. Aplikasi ini berfungsi mengetahui informasi hafalan yang telah dicapai oleh santri dan juga progress yang sedang dilakukan oleh santri untuk menjadi tahfiz Qur'an.</p>
+			<p>Fitur utama aplikasi ini adalah sebagai pemberi informasi (SMS Broadcast) terhadap orang tua / wali santri berupa sms yang dikirimkan ke seluruh data wali dengan memberikan informasi pencapaian santri.</p>
+			<p>Orang tua wali juga dapat Mengetahui informasi hafalan santri yang ada pada database, dengan mengirimkan pesan teks (SMS) menggunakan sintak sms= HAFALAN&lt;spasi&gt;Nomor Induk Santri. Contoh = HAFALAN 17930001 kirim ke <?php echo $eks->sms;?>. Untuk informasi lainnya terkait kegiatan Pesantren dapat menggunakan sintak sms = INFO&lt;spasi&gt;Pertanyaan, contoh INFO kapan penerimaan santri baru dimulai?. kirim ke <?php echo $eks->sms;?>.</p>
 			<p> Aplikasi SMS SANTRI dipersembahkan oleh <a href="teknobara.co.id" target="_blank">CV.TEKNOBARA</a> sebagai bagian dari Tanggung jawab Sosial Perusahaan atau Corporate Social Responsibility (CSR) terhadap pendidikan dan teknologi di masyarakat Indonesia.</p>
 		  
 		  </div>
